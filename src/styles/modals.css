@@ -1,0 +1,44 @@
+.modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.modals form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modals input,
+.modals textarea {
+  margin: 0.5rem;
+  max-width: 480px;
+  min-width: 480px;
+  margin: 0.5rem;
+  background-color: #ffffff;
+  color: black;
+}
+
+.modals input {
+  min-height: 20px;
+
+}
+
+.modals textarea {
+  min-height: 50px;
+}
+
+.modals button {
+  background-color: blue;
+  color: #ffffff;
+  height: 20px;
+}

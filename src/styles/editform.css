@@ -1,0 +1,50 @@
+.edit-form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.edit-form:hover {
+  background-color: transparent;
+}
+
+.edit-form input {
+  margin: 0.5rem;
+  background-color: #ffffff;
+  color: black;
+  height: 20px;
+}
+
+.edit-form textarea {
+  margin: 0.5rem;
+  height: 50px;
+  background-color: #ffffff;
+  color: black;
+  max-width: 480px;
+}
+
+.edit-form button {
+  background-color: blue;
+  color: #ffffff;height: 20px;
+}
+
+.edit-form button:hover {
+  background-color: black;
+}

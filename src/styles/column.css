@@ -1,0 +1,36 @@
+.column-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .column-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 5px;
+    margin-left: 4px;
+  }
+  
+  .delete-button {
+    right: 20px;
+  }
+  
+  .task-container {
+    background: white;
+    padding: 8px;
+    width: 340px;
+    padding-left: 4px;
+  }
+  
+  .add-button-container {
+    padding-top: 8px;
+  }
+  
+  .add-button {
+    color: #ffffff;
+    text-transform: none;
+  }
+  

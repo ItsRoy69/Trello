@@ -1,0 +1,16 @@
+.text-field {
+  background-color: aliceblue;
+  color: black;
+  outline: none;
+  height: 20px;
+  padding: auto;
+  border-radius: 2px;
+}
+
+.button {
+  background-color: black;
+  color: aliceblue;
+  height: 25px;
+  padding: auto;
+  border-radius: 2px;
+}

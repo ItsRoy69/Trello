@@ -1,0 +1,35 @@
+.navigation {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0.5rem 0rem;
+  background-color: #0f50e8;
+  color: rgb(255, 255, 255);
+}
+
+.brand-name {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+.navigation-menu {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.navigation ul {
+  display: flex;
+  padding: 0;
+}
+.navigation li {
+  list-style-type: none;
+  margin: 0 1rem;
+}
+.navigation li p {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
