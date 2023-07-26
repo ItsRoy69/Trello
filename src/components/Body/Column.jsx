@@ -30,6 +30,7 @@ const Column = ({  columnData,  removeColumn,  openModal,  removeTask,  editTask
             className="task-container"
             ref={provided.innerRef}
             {...provided.droppableProps}
+            style={{ backgroundColor: color }}
           >
             {taskIds.map((taskId, index) => (
               <Task
