@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import columnsRawData from "../Data/data";
 import Column from "./Column";
 import Modal from "../modals/modal";
@@ -8,10 +8,9 @@ import AddColumn from "./AddColumn";
 const Trello = () => {
   const [openColModal, setOpenColModal] = useState(false);
   const [open, setOpen] = useState(false);
-  const [columns, setColumns] = useState(() => {
-    const storedColumns = window.localStorage.getItem("columns");
-    return JSON.parse(storedColumns) || columnsRawData;
-  });
+  const [columns, setColumns] = useState(
+    JSON.parse(localStorage.getItem("columns")) || columnsRawData
+  );
   const [modal, setModal] = useState(false);
 
   const onDragEnd = (result) => {
@@ -116,23 +115,21 @@ const Trello = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div>
-        <div>
-          <AddColumn
-            openModal={openColModal}
-            closeModal={closeColModal}
-            addColumn={addColumn}
-            columnId={columns.length + 1}
+      <>
+        <AddColumn
+          openModal={openColModal}
+          closeModal={closeColModal}
+          addColumn={addColumn}
+          columnId={columns.length + 1}
+        />
+        {modal && (
+          <Modal
+            openModal={open}
+            closeModal={closeModal}
+            addTask={addTask}
+            columnData={modal}
           />
-          {modal && (
-            <Modal
-              openModal={open}
-              closeModal={closeModal}
-              addTask={addTask}
-              columnData={modal}
-            />
-          )}
-        </div>
+        )}
         <div style={{ display: "flex", flexDirection: "row" }}>
           {columns.map((c) => (
             <Column
@@ -145,7 +142,7 @@ const Trello = () => {
             />
           ))}
         </div>
-      </div>
+      </>
     </DragDropContext>
   );
 };

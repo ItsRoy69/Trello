@@ -1,34 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import randomColor from "randomcolor";
 import "../../styles/addcolumn.css";
 
-const AddColumn = (props) => {
+const AddColumn = ({ openModal, columnId, addColumn, closeModal }) => {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    if (!props.openModal) {
+    if (!openModal) {
       setTitle("");
     }
-  }, [props.openModal]);
+  }, [openModal]);
 
-  const newColumn = {
-    id: props.columnId,
-    name: title,
-    limit: 10,
-    color: randomColor({ luminosity: "light" }),
-    taskIds: [],
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.addColumn(newColumn);
-    props.closeModal();
-  };
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const newColumn = {
+        id: columnId,
+        name: title,
+        limit: 10,
+        color: randomColor({ luminosity: "light" }),
+        taskIds: [],
+      };
+      addColumn(newColumn);
+      closeModal();
+    },
+    [addColumn, closeModal, columnId, title]
+  );
 
   return (
     <div
-      className={`modal ${props.openModal ? "show" : "hide"}`}
-      onClick={props.closeModal}
+      className={`modal ${openModal ? "show" : "hide"}`}
+      onClick={closeModal}
     >
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <form onSubmit={handleSubmit} className="form">

@@ -2,44 +2,45 @@ import React from "react";
 import Task from "./Task";
 import { Droppable } from "react-beautiful-dnd";
 import "../../styles/column.css";
+const Column = ({  columnData,  removeColumn,  openModal,  removeTask,  editTask }) => { const { id, name, taskIds, color } = columnData;
 
-const Column = (props) => {
+  const handleRemoveColumn = (e) => {
+    e.preventDefault();
+    removeColumn(id);
+  };
+
+  const handleAddCardClick = () => {
+    if (taskIds.length >= 5) return;
+    openModal(columnData);
+  };
+
   return (
     <div>
       <div className="column-header">
         <div className="column-title">
-          {props.columnData.name} ({props.columnData.taskIds.length})
+          {name} ({taskIds.length})
         </div>
-        <button
-          className="delete-button"
-          onClick={(e) => {
-            e.preventDefault();
-            props.removeColumn(props.columnData.id);
-          }}
-        >
+        <button className="delete-button" onClick={handleRemoveColumn}>
           Del
         </button>
       </div>
-      <Droppable droppableId={`${props.columnData.id - 1}`}>
+      <Droppable droppableId={`${id - 1}`}>
         {(provided, snapshot) => (
           <div
             className="task-container"
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {props.columnData.taskIds.map((task, index) => {
-              return (
-                <Task
-                  key={task.id}
-                  id={task.id}
-                  task={task}
-                  color={props.columnData.color}
-                  index={index}
-                  removeTask={props.removeTask}
-                  editTask={props.editTask}
-                />
-              );
-            })}
+            {taskIds.map((taskId, index) => (
+              <Task
+                key={taskId.id}
+                task={taskId}
+                color={color}
+                index={index}
+                removeTask={removeTask}
+                editTask={editTask}
+              />
+            ))}
             {provided.placeholder}
           </div>
         )}
@@ -48,8 +49,8 @@ const Column = (props) => {
       <div className="add-button-container">
         <button
           className="add-button"
-          onClick={() => props.openModal(props.columnData)}
-          disabled={props.columnData.taskIds.length >= 5 ? true : false}
+          onClick={handleAddCardClick}
+          disabled={taskIds.length >= 5}
         >
           Add a Card
         </button>
